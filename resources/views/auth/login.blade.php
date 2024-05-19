@@ -1,47 +1,37 @@
-<x-guest-layout>
-    <!-- Session Status -->
-    <x-auth-session-status class="mb-4" :status="session('status')" />
+<x-auth-layout title="Login Akun Kamu">
+    <section id="content">
+        <div class="card mb-3">
+            <div class="card-body">
+                <div class="pt-4 pb-2">
+                    <h5 class="card-title text-center pb-0 fs-4">Login Akun</h5>
+                    <p class="text-center small">Masukan email dan password kamu</p>
+                </div>
+                <form class="row g-3" action="{{ url('login') }}" method="post" id="form-submit">
+                    @csrf
+                    <x-input label="Email" name="email" />
+                    <x-input label="Password" name="password" type="password" />
 
-    <form method="POST" action="{{ route('login') }}">
-        @csrf
+                    <x-checkbox label="Remember me" name="remember" value="1" />
+                    <div class="col-12">
+                        <button class="btn btn-primary w-100" type="submit" id="btn-submit">Login</button>
+                    </div>
+                    <div class="col-12">
+                        <p class="small mb-0">Belum memiliki akun ? <a href="{{ url('/register') }}">Daftar akun</a>
+                        </p>
+                    </div>
+                </form>
 
-        <!-- Email Address -->
-        <div>
-            <x-input-label for="email" :value="__('Email')" />
-            <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus autocomplete="username" />
-            <x-input-error :messages="$errors->get('email')" class="mt-2" />
+            </div>
         </div>
 
-        <!-- Password -->
-        <div class="mt-4">
-            <x-input-label for="password" :value="__('Password')" />
-
-            <x-text-input id="password" class="block mt-1 w-full"
-                            type="password"
-                            name="password"
-                            required autocomplete="current-password" />
-
-            <x-input-error :messages="$errors->get('password')" class="mt-2" />
+        <div class="credits">
+            Created by <a href="https://wa.me/6282277506232">Bima Ega F.</a>
         </div>
+    </section>
 
-        <!-- Remember Me -->
-        <div class="block mt-4">
-            <label for="remember_me" class="inline-flex items-center">
-                <input id="remember_me" type="checkbox" class="rounded dark:bg-gray-900 border-gray-300 dark:border-gray-700 text-indigo-600 shadow-sm focus:ring-indigo-500 dark:focus:ring-indigo-600 dark:focus:ring-offset-gray-800" name="remember">
-                <span class="ms-2 text-sm text-gray-600 dark:text-gray-400">{{ __('Remember me') }}</span>
-            </label>
-        </div>
+    @push('custom_js')
+        <script class="baseurl" data-value="{{ url('/') }}"></script>
+        <script src="{{ asset('js/login/index.js') }}"></script>
+    @endpush
 
-        <div class="flex items-center justify-end mt-4">
-            @if (Route::has('password.request'))
-                <a class="underline text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800" href="{{ route('password.request') }}">
-                    {{ __('Forgot your password?') }}
-                </a>
-            @endif
-
-            <x-primary-button class="ms-3">
-                {{ __('Log in') }}
-            </x-primary-button>
-        </div>
-    </form>
-</x-guest-layout>
+</x-auth-layout>
