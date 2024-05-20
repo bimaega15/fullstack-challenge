@@ -113,10 +113,11 @@ function basicDeleteConfirmDatatable({
                 dataType: "json",
                 data: data,
                 success: function (data) {
-                    runToast({
-                        type: "bg-success",
-                        title: "Successfully",
-                        description: data,
+                    Swal.fire({
+                        title: 'Successfully',
+                        text: data,
+                        icon: "success",
+                        confirmButtonText: "OK",
                     });
 
                     if (!isRenderView) {

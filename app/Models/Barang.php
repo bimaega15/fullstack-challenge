@@ -11,4 +11,14 @@ class Barang extends Model
     protected $table = 'barang';
     protected $guarded = [];
     public $timestamps = true;
+
+    public function kategoriBarang()
+    {
+        return $this->belongsTo(KategoriBarang::class);
+    }
+
+    public function satuanBarang()
+    {
+        return $this->hasMany(SatuanBarang::class);
+    }
 }

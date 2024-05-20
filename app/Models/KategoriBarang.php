@@ -11,4 +11,9 @@ class KategoriBarang extends Model
     protected $table = 'kategori_barang';
     protected $guarded = [];
     public $timestamps = true;
+
+    public function barang()
+    {
+        return $this->hasMany(Barang::class);
+    }
 }

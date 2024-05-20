@@ -24,4 +24,10 @@ return [
         'Polisi',
         'Lain-lain'
     ],
+    'status_sbarang' => [
+        'bagus' => 'Bagus',
+        'rusak' => 'Rusak',
+        'perlu perbaikan' => 'Perlu Perbaikan',
+        'dalam perbaikan' => 'Dalam Perbaikan'
+    ],
 ];

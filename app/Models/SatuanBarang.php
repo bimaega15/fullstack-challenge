@@ -11,4 +11,9 @@ class SatuanBarang extends Model
     protected $table = 'satuan_barang';
     protected $guarded = [];
     public $timestamps = true;
+
+    public function barang()
+    {
+        return $this->belongsTo(Barang::class);
+    }
 }

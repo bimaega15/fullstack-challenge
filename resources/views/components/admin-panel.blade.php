@@ -35,6 +35,8 @@
     <link rel="stylesheet"
         href="{{ asset('library') }}/bootstrap-datepicker-master/dist/css/bootstrap-datepicker.min.css">
     <link rel="stylesheet" href="{{ asset('library/fontawesome-free-6.5.1-web/css/all.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('library/datatables/datatables.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('library/datatables/DataTables-2.0.0/css/dataTables.bootstrap5.min.css') }}">
 </head>
 
 <body>
@@ -49,15 +51,23 @@
 
     @include('components.partials.modalLogout')
 
+    <x-modal title="Judul Modal" id="smallModal" size="modal-sm"></x-modal>
+    <x-modal title="Judul Modal" id="mediumModal" size="modal-md"></x-modal>
+    <x-modal title="Judul Modal" id="largeModal" size="modal-lg"></x-modal>
+    <x-modal title="Judul Modal" id="extraLargeModal" size="modal-xl"></x-modal>
+
     <!-- Vendor JS Files -->
     <script src="{{ asset('library') }}/jquery-3.7.1.js"></script>
-    <script src="{{ asset('js/utils/index.js') }}"></script>
     <script src="{{ asset('template') }}/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
     <script src="{{ asset('library') }}/sweetalert2/dist/sweetalert2.js"></script>
     <script src="{{ asset('library') }}/select2-develop/dist/js/select2.min.js"></script>
     <script src="{{ asset('library') }}/bootstrap-datepicker-master/dist/js/bootstrap-datepicker.min.js"></script>
-
+    <script src="{{ asset('library/datatables/datatables.min.js') }}"></script>
+    <script src="{{ asset('library/datatables/DataTables-2.0.0/js/dataTables.bootstrap5.min.js') }}"></script>
+    <script src="{{ asset('js/utils/index.js') }}"></script>
+    <script src="{{ asset('js/modal/index.js') }}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script>
         $.ajaxSetup({
             headers: {

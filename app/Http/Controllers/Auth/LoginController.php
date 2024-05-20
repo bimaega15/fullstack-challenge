@@ -7,6 +7,7 @@ use App\Http\Requests\Auth\LoginRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class LoginController extends Controller
 {
@@ -20,9 +21,6 @@ class LoginController extends Controller
         $user = User::where('email', $request->input('email'))->first();
         if ($user) {
             if (!$user->hasVerifiedEmail()) {
-                return back()->withErrors([
-                    'error' => 'Your email address is not verified.',
-                ]);
                 return response()->json([
                     'status' => 400,
                     'message' => 'Email belum diverifikasi'
@@ -36,6 +34,11 @@ class LoginController extends Controller
                 return response()->json([
                     'status' => 200,
                     'message' => 'Berhasil login'
+                ], 200);
+            } else {
+                return response()->json([
+                    'status' => 400,
+                    'message' => 'Password anda salah'
                 ], 200);
             }
         }

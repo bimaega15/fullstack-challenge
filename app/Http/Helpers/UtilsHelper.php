@@ -266,10 +266,10 @@ class UtilsHelper
             : false;
         $dataMenuAdminPanel = [
             'adminPanel',
+            'dashboard',
             'kategoriBarang',
             'barang',
             'satuanBarang',
-            'statistik',
         ];
         $isAdminPanel =  collect($dataMenuAdminPanel)->contains(function ($route) {
             return request()->is($route) || str_starts_with(request()->url(), url($route));
@@ -318,6 +318,11 @@ class UtilsHelper
             $menuProfile[$key]['is_active'] = request()->is(ltrim(parse_url($item['link'], PHP_URL_PATH), '/')) ? 'active' : '';
         }
 
+        $dataActiveAdminPanel = [
+            'kategoriBarang',
+            'barang',
+            'satuanBarang',
+        ];
         $menuAdminPanel = [
             [
                 'nama' => 'Admin Panel',
@@ -325,8 +330,16 @@ class UtilsHelper
                 'is_active' =>  request()->is('adminPanel') ? 'active' : '',
             ],
             [
+                'nama' => 'Dashboard',
+                'link' => url('dashboard'),
+                'is_active' =>  request()->is('dashboard') ? 'active' : '',
+            ],
+            [
                 'nama' => 'Data Master',
                 'link' => '#',
+                'is_active' => collect($dataActiveAdminPanel)->contains(function ($route) {
+                    return request()->is($route) || str_starts_with(request()->url(), url($route));
+                }) ? 'active' : '',
                 'children' => [
                     [
                         'nama' => 'Kategori Barang',
@@ -344,11 +357,6 @@ class UtilsHelper
                         'is_active' =>  request()->is('satuanBarang') ? 'active' : '',
                     ],
                 ],
-            ],
-            [
-                'nama' => 'Statistik',
-                'link' => url('statistik'),
-                'is_active' =>  request()->is('statistik') ? 'active' : '',
             ],
         ];
 
@@ -386,12 +394,12 @@ class UtilsHelper
             $btnLogout = $item['nama'] == 'Logout' ? 'btn-logout' : '';
             if (isset($item['children'])) {
                 $html .= '<li class="nav-item dropdown">';
-                $html .= '<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">';
+                $html .= '<a class="nav-link dropdown-toggle ' . $item['is_active'] . '" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">';
                 $html .= $item['nama'];
                 $html .= '</a>';
                 $html .= '<ul class="dropdown-menu">';
                 foreach ($item['children'] as $child) {
-                    $html .= '<li><a class="dropdown-item" href="' . $child['link'] . '">' . $child['nama'] . '</a></li>';
+                    $html .= '<li><a class="dropdown-item ' . $child['is_active'] . '" href="' . $child['link'] . '">' . $child['nama'] . '</a></li>';
                 }
                 $html .= '</ul>';
                 $html .= '</li>';

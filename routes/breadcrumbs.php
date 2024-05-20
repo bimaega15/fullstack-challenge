@@ -19,3 +19,19 @@ Breadcrumbs::for('adminPanel', function (BreadcrumbTrail $trail) {
     $trail->parent('home');
     $trail->push('Admin Panel', url('adminPanel'));
 });
+Breadcrumbs::for('kategoriBarang', function (BreadcrumbTrail $trail) {
+    $trail->parent('home');
+    $trail->push('Kategori Barang', url('kategoriBarang'));
+});
+Breadcrumbs::for('barang', function (BreadcrumbTrail $trail) {
+    $trail->parent('home');
+    $trail->push('Barang', url('barang'));
+});
+Breadcrumbs::for('satuanBarang', function (BreadcrumbTrail $trail) {
+    $trail->parent('home');
+    $trail->push('Satuan Barang', url('satuanBarang'));
+});
+Breadcrumbs::for('dashboard', function (BreadcrumbTrail $trail) {
+    $trail->parent('home');
+    $trail->push('Admin Panel', url('dashboard'));
+});

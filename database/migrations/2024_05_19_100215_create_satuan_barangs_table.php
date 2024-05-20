@@ -13,7 +13,6 @@ return new class extends Migration
     {
         Schema::create('satuan_barang', function (Blueprint $table) {
             $table->id();
-            $table->string('nama_sbarang');
             $table->string('kode_sbarang');
             $table->enum('status_sbarang', ['bagus', 'rusak', 'perlu perbaikan', 'dalam perbaikan']);
             $table->bigInteger('barang_id')->unsigned();
