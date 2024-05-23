@@ -35,3 +35,11 @@ Breadcrumbs::for('dashboard', function (BreadcrumbTrail $trail) {
     $trail->parent('home');
     $trail->push('Admin Panel', url('dashboard'));
 });
+Breadcrumbs::for('realtimeChat', function (BreadcrumbTrail $trail) {
+    $trail->parent('home');
+    $trail->push('Realtime Chat', url('realtimeChat'));
+});
+Breadcrumbs::for('chatApp', function (BreadcrumbTrail $trail) {
+    $trail->parent('home');
+    $trail->push('Chat Application', url('chatApp'));
+});

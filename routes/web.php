@@ -6,6 +6,7 @@ use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\VerificationController;
 use App\Http\Controllers\BarangController;
+use App\Http\Controllers\ChatAppController;
 use App\Http\Controllers\ProfileController;
 
 use App\Http\Controllers\CompleteProfileController;
@@ -14,6 +15,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\KategoriBarangController;
 use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\PageController;
+use App\Http\Controllers\RealtimeChatController;
 use App\Http\Controllers\SatuanBarangController;
 use App\Http\Controllers\Select2Controller;
 use Illuminate\Support\Facades\Route;
@@ -61,6 +63,8 @@ Route::get('/dashboard', [DashboardController::class, 'index']);
 
 Route::get('/page/404', [PageController::class, 'page404'])->name('page.page404');
 
+Route::get('/realtimeChat', [RealtimeChatController::class, 'index']);
+Route::get('/chatApp', [ChatAppController::class, 'index']);
 
 Route::get('select2/kategoriBarang', [Select2Controller::class, 'kategoriBarang']);
 Route::get('select2/barang', [Select2Controller::class, 'barang']);

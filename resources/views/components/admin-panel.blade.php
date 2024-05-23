@@ -67,7 +67,23 @@
     <script src="{{ asset('library/datatables/DataTables-2.0.0/js/dataTables.bootstrap5.min.js') }}"></script>
     <script src="{{ asset('js/utils/index.js') }}"></script>
     <script src="{{ asset('js/modal/index.js') }}"></script>
+    <script src="{{ asset('template') }}/assets/vendor/tinymce/tinymce.min.js"></script>
+    <script src="{{ asset('template') }}/assets/js/main.js"></script>
+
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://js.pusher.com/8.2.0/pusher.min.js"></script>
+    <script>
+        Pusher.logToConsole = true;
+
+        var pusher = new Pusher('95cee8b1569a3ad082e5', {
+            cluster: 'ap1'
+        });
+
+        var channel = pusher.subscribe('my-channel');
+        channel.bind('my-event', function(data) {
+            alert(JSON.stringify(data));
+        });
+    </script>
     <script>
         $.ajaxSetup({
             headers: {

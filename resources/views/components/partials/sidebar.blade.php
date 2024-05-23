@@ -21,7 +21,7 @@
                </a>
            </li>
            <li class="nav-item">
-               <a class="nav-link {{ request()->is('realtimeChat') ? '' : 'collapsed' }}" href="{{ url('/') }}">
+               <a class="nav-link {{ request()->is('realtimeChat') ? '' : 'collapsed' }}" href="{{ url('/realtimeChat') }}">
                    <i class="fa-brands fa-rocketchat"></i>
                    <span>Realtime Chat</span>
                </a>

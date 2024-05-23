@@ -274,7 +274,14 @@ class UtilsHelper
         $isAdminPanel =  collect($dataMenuAdminPanel)->contains(function ($route) {
             return request()->is($route) || str_starts_with(request()->url(), url($route));
         });
-        $isRealtimeChat = request()->is('/chat') ? true : false;
+
+        $dataMenuChat = [
+            'realtimeChat',
+            'chatApp',
+        ];
+        $isRealtimeChat = collect($dataMenuChat)->contains(function ($route) {
+            return request()->is($route) || str_starts_with(request()->url(), url($route));
+        });
 
         $menuHome = [
             [
@@ -364,14 +371,12 @@ class UtilsHelper
             [
                 'nama' => 'Realtime Chat',
                 'link' => url('realtimeChat'),
+                'is_active' =>  request()->is('realtimeChat') ? 'active' : '',
             ],
             [
-                'nama' => 'Ruang Chat',
-                'link' => url('ruangChat'),
-            ],
-            [
-                'nama' => 'Join Chat',
-                'link' => url('ruangChat'),
+                'nama' => 'Chat App',
+                'link' => url('chatApp'),
+                'is_active' =>  request()->is('chatApp') ? 'active' : '',
             ],
         ];
 
